@@ -42,3 +42,5 @@ cmake-build-*/
 
 # IntelliJ
 out/
+#ignore application datas
+data/
