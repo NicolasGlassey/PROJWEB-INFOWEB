@@ -6,7 +6,7 @@
  * @version   15.02.2021
  */
 
-require "model/jsonManager.php";
+require "model/usersManager.php";
 /**
  * @brief This function is designed to redirect the user on the login page and check if this user is logged in or not, if not it checks the user credentials int the JSON users file
  * @param $postDatas
