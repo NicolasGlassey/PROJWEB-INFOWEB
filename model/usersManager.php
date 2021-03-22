@@ -14,6 +14,9 @@
 require "model/jsonManager.php";
 function checkLogin($username, $usrPswd){
     $json = readJson("data/users.json");
+    if($json == null){
+        return false;
+    }
     $result = false;
 
     foreach ($json as $item) { //looping through the json file content

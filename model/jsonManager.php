@@ -26,7 +26,7 @@ function createPath($fileName)
 function readJson($fileName)
 {
     if (!(fopen(createPath($fileName), "r"))) { //checking if the file exists
-        echo "Can't open stream";
+        return null;
     } else {
         $file = fopen(createPath($fileName), "r"); //Opens the file
         $fileContent = fread($file, filesize(createPath($fileName))); //Gets the content of the file
