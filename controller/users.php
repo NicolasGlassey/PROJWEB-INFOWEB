@@ -18,7 +18,7 @@ function login($postDatas){
 
         if(checkLogin($userName,$password)){ //Checking user credentials in the json file
             $_SESSION["userName"] = $userName;
-            require ("view/Login_sucessfull.php");
+            require ("view/home.php");
         }
         else{
             $_GET['error'] = 'wrongLogin';
@@ -36,6 +36,6 @@ function login($postDatas){
 function logout(){
     $_SESSION = array();
     session_destroy();
-    require ("view/login.php");
+    require ("view/home.php");
 }
 
