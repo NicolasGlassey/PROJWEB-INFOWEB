@@ -8,7 +8,6 @@
  Template: GARAGE
  */
 
-
 .allcontain{
 	max-width: 1366px;
 	margin-left: auto;
@@ -744,7 +743,8 @@ font-weight: bold;
 }
 .bdots{
 	padding-right: 40px;
-} 
+}
+
 .row{
 	padding: 0px;
 	margin: 0px;
