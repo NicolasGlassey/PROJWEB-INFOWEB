@@ -14,5 +14,6 @@ function displayArticles(){
     }
     else{
         $error = "Nous avons recontré un problème, veuillez réessayer ultérieurement";
+        require_once "view/home.php";
     }
 }
