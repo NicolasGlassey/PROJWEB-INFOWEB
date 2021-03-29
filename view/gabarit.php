@@ -16,10 +16,10 @@
     <meta name="author" content="Web Domus Italia">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="view/Site/source/bootstrap-3.3.6-dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="view/Site/source/font-awesome-4.5.0/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="view/Site/style/slider.css">
-    <link rel="stylesheet" type="text/css" href="view/Site/style/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="/view/Site/source/bootstrap-3.3.6-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/view/Site/source/font-awesome-4.5.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/view/Site/style/slider.css">
+    <link rel="stylesheet" type="text/css" href="/view/Site/style/mystyle.css">
 </head>
 <body>
 <!-- Header -->
@@ -36,8 +36,8 @@
         </ul>
         <ul class="logreg">
             <?php if(isset($_SESSION['userName'])) :?>
-                <li><?=$_SESSION['userName']?></li>
-                <li><a href="../index.php?action=logout">Logout </a></li>
+                <li><?=$_SESSION['userName']?> |</li>
+                <li> <a href="../index.php?action=logout">Logout </a></li>
             <?php else:?>
                 <li><a href="../index.php?action=login">Login </a></li>
                 <li><a href="../index.php?action=register"><span class="register">Register</span></a></li>
@@ -102,10 +102,10 @@
 </div>
 </div>
 
-<script type="text/javascript" src="view/Site/source/bootstrap-3.3.6-dist/js/jquery.js"></script>
-<script type="text/javascript" src="view/Site/source/js/isotope.js"></script>
-<script type="text/javascript" src="view/Site/source/js/myscript.js"></script>
-<script type="text/javascript" src="view/Site/source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
-<script type="text/javascript" src="view/Site/source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/view/Site/source/bootstrap-3.3.6-dist/js/jquery.js"></script>
+<script type="text/javascript" src="/view/Site/source/js/isotope.js"></script>
+<script type="text/javascript" src="/view/Site/source/js/myscript.js"></script>
+<script type="text/javascript" src="/view/Site/source/bootstrap-3.3.6-dist/js/jquery.1.11.js"></script>
+<script type="text/javascript" src="/view/Site/source/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 </body>
 </html>
