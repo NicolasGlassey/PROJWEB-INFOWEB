@@ -10,12 +10,19 @@
  * @brief This function is designed to redirect the user on the error page if the requested page doesn't exist
  */
 function notFound(){
-    require "view/lost.php";
+    require_once "view/lost.php";
 }
 
 /**
  * @brief This function is designed to redirect the user on the home page when requested
  */
 function home(){
-    require "view/home.php";
+    require_once "view/home.php";
+}
+
+/**
+ * @brief This function is designed to redirect the user on the contact page when requested
+ */
+function contact(){
+    require_once "view/contact.php";
 }

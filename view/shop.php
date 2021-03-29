@@ -13,7 +13,7 @@ ob_start()
     <div id="carousel-up" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner " role="listbox">
             <div class="item active">
-                <img src="Site/image/oldcar.jpg" alt="oldcar">
+                <img src="view/Site/image/oldcar.jpg" alt="oldcar">
                 <div class="carousel-caption">
                     <h2>Porsche</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur ,<br>
@@ -21,7 +21,7 @@ ob_start()
                 </div>
             </div>
             <div class="item">
-                <img src="Site/image/porche.jpg" alt="porche">
+                <img src="view/Site/image/porche.jpg" alt="porche">
                 <div class="carousel-caption">
                     <h2>Porsche</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur ,<br>
@@ -29,7 +29,7 @@ ob_start()
                 </div>
             </div>
             <div class="item">
-                <img src="Site/image/benz.jpg" alt="benz">
+                <img src="view/Site/image/benz.jpg" alt="benz">
                 <div class="carousel-caption">
                     <h2>Mercedes</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur ,<br>
@@ -101,7 +101,7 @@ ob_start()
                     <?php if(is_file($article['photo'])) : ?>
                         <img src="<?php $article['image']?>" alt="car">
                     <?php else : ?>
-                        <img src="Site/image/noImage.png" alt="no car image found">
+                        <img src="view/Site/image/noImage.png" alt="no car image found">
                     <?php endif; ?>
                     <div class="txtcontent">
                         <div class="stars">
@@ -116,7 +116,7 @@ ob_start()
                             <button>READ MORE</button><br>
                             <div class="wishtxt">
                                 <p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
-                                <p class="paragraph2">Compare <span class="icon"><img src="Site/image/compicon.png" alt="compicon"></span></p>
+                                <p class="paragraph2">Compare <span class="icon"><img src="view/Site/image/compicon.png" alt="compicon"></span></p>
                             </div>
                         </div>
                         <div class="stars2">

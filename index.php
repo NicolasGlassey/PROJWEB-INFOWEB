@@ -25,6 +25,12 @@ if(isset($_GET['action'])){
         case "displayArticles":
             displayArticles();
             break;
+        case "home":
+            home();
+            break;
+        case "contact":
+            contact();
+            break;
         default:
             notFound();
     }

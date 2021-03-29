@@ -5,7 +5,7 @@
  * @author    Created by Nolan.EVARD
  * @version   17.03.2021
  */
-require "model/jsonManager.php";
+require_once "model/jsonManager.php";
 function getArticles(){
     $json = readJson("data/ads.json");
     if ($json == null){
