@@ -100,7 +100,7 @@ ob_start()
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="txthover">
                                 <?php if(is_file($article['image'])) : ?>
-                                <img src="<?php $article['image']?>" alt="car">
+                                <img src="<?=$article['image'];?>" alt="car">
                                 <?php else : ?>
                                 <img src="/view/Site/image/noImage.png" alt="no car image found">
                                 <?php endif; ?>
@@ -111,9 +111,9 @@ ob_start()
                                         <div class="glyphicon glyphicon-star"></div>
                                     </div>
                                     <div class="simpletxt">
-                                        <h3 class="name"><?php $article['title']?></h3>
-                                        <p>"<?php $article['description']?>" </p>
-                                        <h4 class="price"><?php $article['price']?></h4>
+                                        <h3 class="name"><?=$article['title']?></h3>
+                                        <p>"<?=$article['description']?>" </p>
+                                        <h4 class="price"><?=$article['price']?></h4>
                                         <button>READ MORE</button><br>
                                         <div class="wishtxt">
                                             <p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>
