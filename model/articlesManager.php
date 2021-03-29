@@ -13,14 +13,14 @@ function getArticles(){
     }
     $ads = array();
 
-    foreach ($json as $item) { //looping through the json file content
+    foreach ($json as $key => $item) { //looping through the json file content
             $temp = array(
                 "image" => $item->image,
                 "title" => $item->title,
                 "price" => $item->price,
                 "description"=>$item->description
             );
-            $ads = $ads + $temp;
+            array_push($ads,$temp);
         }
     return $ads;
 }
