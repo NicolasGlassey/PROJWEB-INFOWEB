@@ -8,6 +8,7 @@
 
 require "controller/users.php";
 require "controller/navigation.php";
+require "controller/articles.php";
 
 session_start();
 
@@ -20,6 +21,15 @@ if(isset($_GET['action'])){
             break;
         case "logout":
             logout();
+            break;
+        case "displayArticles":
+            displayArticles();
+            break;
+        case "home":
+            home();
+            break;
+        case "contact":
+            contact();
             break;
         default:
             notFound();

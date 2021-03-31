@@ -26,28 +26,10 @@ function createPath($fileName)
 function readJson($fileName)
 {
     if (!(fopen(createPath($fileName), "r"))) { //checking if the file exists
-        echo "Can't open stream";
+        return null;
     } else {
         $file = fopen(createPath($fileName), "r"); //Opens the file
         $fileContent = fread($file, filesize(createPath($fileName))); //Gets the content of the file
         return json_decode($fileContent); //Decode the content from Json ton php objects
     }
-}
-
-/**
- * @brief This function is designed to check if the user credentials are the same as the ones in the JSON file
- * @param $username :user name from controller
- * @param $usrPswd :password from controller
- * @return bool
- */
-function checkLogin($username, $usrPswd){
-    $json = readJson("data/users.json");
-    $result = false;
-
-    foreach ($json as $item) { //looping through the json file content
-        if ($item->name == $username && password_verify($usrPswd, $item->password)){
-            $result = true;
-        }
-    }
-    return $result;
 }
