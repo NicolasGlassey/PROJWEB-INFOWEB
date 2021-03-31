@@ -82,9 +82,7 @@
         <li role="presentation"><a href="#/">CONTACT US</a></li>
         <li role="presentation"><a href="#/">RECEIVE OUR NEWSLETTER</a></li>
     </ul>
-    <p>"Lorem ipsum dolor sit amet, consectetur,  sed do eiusmod tempor incididunt <br>
-        eiusmod tempor incididunt </p>
-    <img src="Site/image/line.png" alt="line"> <br>
+    <br>
     <div class="bottomsocial">
         <a href="#"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-twitter"></i></a>
