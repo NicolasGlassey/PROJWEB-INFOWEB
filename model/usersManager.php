@@ -1,7 +1,7 @@
 <?php
 /**
  * @file      usersManager.php
- * @brief     This file is
+ * @brief     This file is designed to manage all the interactions with the users
  * @author    Created by Nolan.EVARD
  * @version   17.03.2021
  */
