@@ -12,16 +12,16 @@
  */
 
 function checkErrors(){
-    $error = $_GET['error'];
+    $error = $_GET['error'];//TODO ne plus utiliser $_GET pour les erreurs
     $message = "";
 
+    //TODO un switch case avec un seul choix !!
     switch($error){
         case "wrongLogin" :
-            $message = "Wrong email address or password";
+            $message = "Wrong email address or password";//TODO inspirez vous des messages utilisés sur les plateformes en "vue"
             break;
         default:
             break;
     }
     return $message;
 }
-?>

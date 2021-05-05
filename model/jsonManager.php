@@ -9,7 +9,7 @@
 /**
  * @brief This function is designed to get the correct path to a specific file no matter where the project is located
  * @param $fileName :the path to the file, including the file name, from the project root directory
- * @return string
+ * @return string : //TODO à décrire
  */
 function createPath($fileName)
 {
@@ -31,5 +31,6 @@ function readJson($fileName)
         $file = fopen(createPath($fileName), "r"); //Opens the file
         $fileContent = fread($file, filesize(createPath($fileName))); //Gets the content of the file
         return json_decode($fileContent); //Decode the content from Json ton php objects
+        //TODO gestion d'exception à revoir
     }
 }

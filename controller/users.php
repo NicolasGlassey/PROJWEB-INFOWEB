@@ -9,10 +9,10 @@
 require "model/usersManager.php";
 /**
  * @brief This function is designed to redirect the user on the login page and check if this user is logged in or not, if not it checks the user credentials int the JSON users file
- * @param $postDatas
+ * @param $postDatas : //TODO descriptif de cette variable
  */
 function login($postDatas){
-    if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){//verify that the user has entered his credentials
+    if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
         $userName = $postDatas["userInputEmail"];
         $password = $postDatas["userPswd"];//Encrypt the user password
 
@@ -21,7 +21,7 @@ function login($postDatas){
             require ("view/home.php");
         }
         else{
-            $_GET['error'] = 'wrongLogin';
+            $_GET['error'] = 'wrongLogin';//TODO ne jamais écrire dans un $_GET ni un $_POST
             require ("view/login.php");
         }
     }

@@ -12,11 +12,13 @@
 require_once "model/jsonManager.php";
 function getArticles(){
     $json = readJson("data/ads.json");
+    //TODO revoir la gestion d'exception en cas de problème de lecture du json
     if ($json == null){
         return null;
     }
     $ads = array();
 
+    //TODO cette fonction pourrait être isolée dans sa propre fonction
     foreach ($json as $key => $item) { //looping through the json file content
             $temp = array(
                 "image" => $item->image,

@@ -43,6 +43,7 @@
 						Sign In
 					</span>
                     <?php if(isset($_GET["error"])) :?>
+                    <?php //TODO cet utilisation de $GET["error"]. Le message d'erreur devra venir depuis une autre variable (voir mes retours dans les contrôleurs)?>
                         <div class="alert alert-danger">
                             <?php
                                 require "controller/error.php";
