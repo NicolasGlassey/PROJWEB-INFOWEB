@@ -39,16 +39,12 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="../index.php?action=login" method="post">
-					<span class="login100-form-title">
+					<span class="login100-form-title" style="background-color: black;">
 						Sign In
 					</span>
-                    <?php if(isset($_GET["error"])) :?>
-                    <?php //TODO cet utilisation de $GET["error"]. Le message d'erreur devra venir depuis une autre variable (voir mes retours dans les contrôleurs)?>
+                    <?php if(isset($error)):?>
                         <div class="alert alert-danger">
-                            <?php
-                                require "controller/error.php";
-                                echo checkErrors();
-                            ?>
+                            <?= $error ?>
                         </div>
                     <?php endif;?>
                     <!-- username -->
@@ -68,13 +64,13 @@
 							Forgot
 						</span>
 
-						<a href="#" class="txt2">
+						<a href="#" class="txt2" style="color: black;">
 							Username / Password?
 						</a>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" style="background-color: black;">
 							Sign in
 						</button>
 					</div>
@@ -84,7 +80,7 @@
 							Don’t have an account?
 						</span>
 
-						<a href="#" class="txt3">
+						<a href="#" class="txt3" style="color: black;">
 							Sign up now
 						</a>
 					</div>

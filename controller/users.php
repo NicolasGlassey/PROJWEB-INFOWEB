@@ -15,12 +15,17 @@ function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
         $userName = $postDatas["userInputEmail"];
         $password = $postDatas["userPswd"];//Encrypt the user password
-
-        if(checkLogin($userName,$password)){ //Checking user credentials in the json file
-            $_SESSION["userName"] = $userName;
-            require ("view/home.php");
+        try{
+            if(checkLogin($userName,$password)){ //Checking user credentials in the json file
+                $_SESSION["userName"] = $userName;
+                require ("view/home.php");
+            }
         }
-        else{
+        catch (jsonFileException){
+            $error = 'An error has occured. Please try later';
+            require ("view/login.php");
+        }
+        catch (wrongLoginException){
             $error = 'Wrong email address or password';
             require ("view/login.php");
         }
