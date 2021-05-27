@@ -35,5 +35,8 @@ function readJson($fileName)
             return json_decode($fileContent); //Decode the content from Json ton php objects
         }
     }
+    else{
+        throw new jsonFileException();
+    }
 }
 class jsonFileException extends Exception{}
