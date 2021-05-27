@@ -11,13 +11,16 @@
  */
 function displayArticles(){
     require_once "model/articlesManager.php";
-    $articles = "";
-    if (getArticles()!=null){
+    try {
         $articles = getArticles();
         require_once "view/shop.php";
     }
-    else{
-        $error = "Nous avons recontré un problème, veuillez réessayer ultérieurement";
-        require_once "view/home.php";
+    catch (jsonFileException){
+        $error = "An error has occured. Please try later";
+        require_once "view/shop.php";
+    }
+    catch (articlesException){
+        $error = "No articles available";
+        require_once "view/shop.php";
     }
 }

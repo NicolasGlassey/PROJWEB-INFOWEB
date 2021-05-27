@@ -9,6 +9,13 @@ $title = "CollectionCar - Shop";
 
 ob_start()
 ?>
+<?php if(isset($error)):?>
+    <div class="allcontain">
+        <div class="alert alert-danger">
+            <?= $error; ?>
+        </div>
+    </div>
+<?php else:?>
     <div class="allcontain">
         <div id="carousel-up" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner " role="listbox">
@@ -133,7 +140,7 @@ ob_start()
             </div>
         </div>
     </div>
-
+<?php endif;?>
 <?php
 $content = ob_get_clean();
 require "view/gabarit.php";
