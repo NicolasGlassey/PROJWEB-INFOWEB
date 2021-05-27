@@ -11,18 +11,26 @@
  * @param $usrPswd :password from controller
  * @return bool
  */
-require "model/jsonManager.php";
-function checkLogin($username, $usrPswd){
-    $json = readJson("data/users.json");
-    if($json == null){
-        return false;
-    }
-    $result = false;
 
-    foreach ($json as $item) { //looping through the json file content
-        if ($item->name == $username && password_verify($usrPswd, $item->password)){
-            $result = true;
+function checkLogin($username, $usrPswd){
+    require_once "model/jsonManager.php";
+    try {
+        $json = readJson("data/users.json");
+        $result = false;
+
+        foreach ($json as $item) { //looping through the json file content
+            if ($item->name == $username && password_verify($usrPswd, $item->password)){
+                $result = true;
+            }
+        }
+        if(!($result)){
+            throw new wrongLoginException();
         }
     }
+    catch (jsonFileException){
+        throw new jsonFileException();
+    }
+
     return $result;
 }
+class wrongLoginException extends Exception{}
