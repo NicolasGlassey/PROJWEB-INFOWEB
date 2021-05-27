@@ -11,20 +11,31 @@
  */
 require_once "model/jsonManager.php";
 function getArticles(){
-    $json = readJson("data/ads.json");
-    if ($json == null){
-        return null;
+    try {
+        $json = readJson("data/ads.json");
+        if ($json == null){
+            throw new articlesException();
+        }
+        $ads = formatArticles($json);
     }
+    catch (jsonFileException){
+        throw new jsonFileException();
+    }
+
+    return $ads;
+}
+function formatArticles($json){
     $ads = array();
 
     foreach ($json as $key => $item) { //looping through the json file content
-            $temp = array(
-                "image" => $item->image,
-                "title" => $item->title,
-                "price" => $item->price,
-                "description"=>$item->description
-            );
-            array_push($ads,$temp);
-        }
+        $temp = array(
+            "image" => $item->image,
+            "title" => $item->title,
+            "price" => $item->price,
+            "description"=>$item->description
+        );
+        array_push($ads,$temp);
+    }
     return $ads;
 }
+class articlesException extends Exception{}
