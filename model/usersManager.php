@@ -13,22 +13,17 @@
  */
 
 function checkLogin($username, $usrPswd){
-    require_once "model/jsonManager.php";
+    require_once "model/dbConnector.php";
     try {
-        $json = readJson("data/users.json");
-        $result = false;
-
-        foreach ($json as $item) { //looping through the json file content
-            if ($item->name == $username && password_verify($usrPswd, $item->password)){
-                $result = true;
-            }
-        }
+        $query = "SELECT password FROM sellers WHERE username ='" . $username ."';";
+        $queryResult = executeQueryReturn($query);
+        $result = password_verify($usrPswd, $queryResult[0]['password']);
         if(!($result)){
             throw new wrongLoginException();
         }
     }
-    catch (jsonFileException){
-        throw new jsonFileException();
+    catch (databaseException){
+        throw new databaseException();
     }
 
     return $result;

@@ -49,7 +49,7 @@
                     <?php endif;?>
                     <!-- username -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email address">
-						<input class="input100" type="email" name="userInputEmail" placeholder="Email Address">
+						<input class="input100" type="text" name="userInputEmail" placeholder="Email Address">
 						<span class="focus-input100"></span>
 					</div>
 

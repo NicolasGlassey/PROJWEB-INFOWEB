@@ -11,31 +11,19 @@
  */
 require_once "model/jsonManager.php";
 function getArticles(){
+    $query = "SELECT image, brand, model, price FROM cars";
+    require_once "model/dbConnector.php";
     try {
-        $json = readJson("data/ads.json");
-        if ($json == null){
-            throw new articlesException();
-        }
-        $ads = formatArticles($json);
+       $queryResult = executeQueryReturn($query);
+       if(count($queryResult) == 0){
+           throw new articlesException();
+       }
     }
-    catch (jsonFileException){
-        throw new jsonFileException();
+    catch (databaseException){
+        throw new databaseException();
     }
 
-    return $ads;
+    return $queryResult;
 }
-function formatArticles($json){
-    $ads = array();
-
-    foreach ($json as $key => $item) { //looping through the json file content
-        $temp = array(
-            "image" => $item->image,
-            "title" => $item->title,
-            "price" => $item->price,
-            "description"=>$item->description
-        );
-        array_push($ads,$temp);
-    }
-    return $ads;
-}
+// Exceptions when there's no articles in the database
 class articlesException extends Exception{}
