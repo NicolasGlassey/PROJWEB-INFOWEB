@@ -21,7 +21,7 @@ function login($postDatas){
                 require ("view/home.php");
             }
         }
-        catch (jsonFileException){
+        catch (databaseException){
             $error = 'An error has occured. Please try later';
             require ("view/login.php");
         }

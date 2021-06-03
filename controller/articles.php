@@ -15,7 +15,7 @@ function displayArticles(){
         $articles = getArticles();
         require_once "view/shop.php";
     }
-    catch (jsonFileException){
+    catch (databaseException){
         $error = "An error has occured. Please try later";
         require_once "view/shop.php";
     }
