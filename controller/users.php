@@ -40,15 +40,20 @@ function login($postDatas){
  * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
  */
 function register($registerData){
-    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($$registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
+    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
         try {
-            if(register($registerData)){ //Checking user credentials in the json file
-                $_SESSION["userName"] = $registerData["userInputUsername"];
-                require ("view/home.php");
-            }
+            require_once ("model/usersManager.php");
+            ifSellerExists($registerData['userInputEmail']);
+            registering($registerData);
+            $_SESSION["userName"] = $registerData["userInputUsername"];
+            require ("view/home.php");
         }
         catch (databaseException){
             $error = 'An error has occured. Please try later';
+            require ("view/register.php");
+        }
+        catch (registeredException){
+            $error = 'You have not fill all';
             require ("view/register.php");
         }
         catch (registeredException){
@@ -69,4 +74,3 @@ function logout(){
     session_destroy();
     require ("view/home.php");
 }
-

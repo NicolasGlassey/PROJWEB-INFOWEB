@@ -28,4 +28,29 @@ function checkLogin($username, $usrPswd){
 
     return $result;
 }
+
+function ifSellerExists(){
+    require_once "model/dbConnector.php";
+    try {
+        $query = "SELECT email FROM sellers WHERE email ='" . $ ."';";
+        $queryResult = executeQueryReturn($query);
+    }
+    catch (databaseException){
+        throw new databaseException();
+    }
+}
+
+function registering($registerData){
+    require_once "model/dbConnector.php";
+    try {
+        $query = "INSERT INTO sellers VALUES (" . $registerData['firstname'] . ");";
+        $queryResult = executeQueryReturn($query);
+
+
+    }
+    catch (databaseException){
+        throw new databaseException();
+    }
+}
 class wrongLoginException extends Exception{}
+class registeredException extends Exception{}
