@@ -12,10 +12,10 @@
  * @return bool
  */
 
-function checkLogin($username, $usrPswd){
+function checkLogin($email, $usrPswd){
     require_once "model/dbConnector.php";
     try {
-        $query = "SELECT password FROM sellers WHERE username ='" . $username ."';";
+        $query = "SELECT password FROM sellers WHERE email ='" . $email ."';";
         $queryResult = executeQueryReturn($query);
         $result = password_verify($usrPswd, $queryResult[0]['password']);
         if(!($result)){

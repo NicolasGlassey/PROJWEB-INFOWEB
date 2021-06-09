@@ -35,8 +35,8 @@
             <li>Give us a call : +66666666 </li>
         </ul>
         <ul class="logreg">
-            <?php if(isset($_SESSION['userName'])) :?>
-                <li><?=$_SESSION['userName']?> |</li>
+            <?php if(isset($_SESSION['userEmail'])) :?>
+                <li><?=$_SESSION['userEmail']?> |</li>
                 <li> <a href="../index.php?action=logout">Logout </a></li>
             <?php else:?>
                 <li><a href="../index.php?action=login">Login </a></li>

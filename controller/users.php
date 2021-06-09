@@ -13,11 +13,11 @@ require "model/usersManager.php";
  */
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
-        $userName = $postDatas["userInputEmail"];
+        $email = $postDatas["userInputEmail"];
         $password = $postDatas["userPswd"];//Encrypt the user password
         try{
-            if(checkLogin($userName,$password)){ //Checking user credentials in the json file
-                $_SESSION["userName"] = $userName;
+            if(checkLogin($email,$password)){ //Checking user credentials in the json file
+                $_SESSION["userEmail"] = $email;
                 require ("view/home.php");
             }
         }
