@@ -13,16 +13,16 @@
     <title>Register</title>
 
     <!-- Icons font CSS-->
-    <link href="Register/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="Register/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="view/Register/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="view/Register/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Vendor CSS-->
-    <link href="Register/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="Register/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="view/Register/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="view/Register/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="Register/css/main.css" rel="stylesheet" media="all">
+    <link href="view/Register/css/main.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -117,14 +117,14 @@
 </div>
 
 <!-- Jquery JS-->
-<script src="Register/vendor/jquery/jquery.min.js"></script>
+<script src="view/Register/vendor/jquery/jquery.min.js"></script>
 <!-- Vendor JS-->
-<script src="Register/vendor/select2/select2.min.js"></script>
-<script src="Register/vendor/datepicker/moment.min.js"></script>
-<script src="Register/vendor/datepicker/daterangepicker.js"></script>
+<script src="view/Register/vendor/select2/select2.min.js"></script>
+<script src="view/Register/vendor/datepicker/moment.min.js"></script>
+<script src="view/Register/vendor/datepicker/daterangepicker.js"></script>
 
 <!-- Main JS-->
-<script src="Register/js/global.js"></script>
+<script src="view/Register/js/global.js"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
