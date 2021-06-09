@@ -55,7 +55,7 @@ function register($registerData){
             require ("view/register.php");
         }
         catch (passwordNotMatchException){
-            $error = 'The two password is not matching';
+            $error = 'The two passwords are not matching';
             require ("view/register.php");
         }
         catch (notFullFillException){
