@@ -47,7 +47,8 @@ function register($registerData){
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
             $_SESSION["userName"] = $registerData["userInputUsername"];
-            require ("view/shop.php");
+            require_once ("controller/articles.php");
+            displayArticles();
         }
         catch (databaseException){
             $error = 'An error has occured. Please try later';

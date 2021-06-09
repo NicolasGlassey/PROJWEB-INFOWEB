@@ -107,10 +107,10 @@ function registering($registerData){
     try {
         $passwordHash = password_hash($registerData['userInputPassword'], PASSWORD_DEFAULT);
         if(isset($registerData['userInputPhonenumber'])){
-            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "','" . $registerData['userInputPhonenumber'] . "','" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
+            $query = "INSERT INTO sellers VALUES (NULL,'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "','" . $registerData['userInputPhonenumber'] . "','" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
         }
         else{
-            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "'," . NULL . ",'" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
+            $query = "INSERT INTO sellers VALUES (NULL,'"  . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "',NULL,'" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
         }
         $queryResult = executeQuery($query);
     }
