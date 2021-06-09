@@ -36,13 +36,14 @@ function login($postDatas){
 }
 
 /**
- * @brief This function is designed to redirect the user on the register page and check if this user is already registred, if not it checks the user credentials int the JSON users file
+ * @brief This function is designed to redirect the user on the register page and check if user : fill correctly all field, email entered by user match with a user in database and if all thing is ok it register the new seller in the database
  * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
  */
 function register($registerData){
     if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
         try {
             require_once ("model/usersManager.php");
+            checkData($registerData);
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
             $_SESSION["userName"] = $registerData["userInputUsername"];
@@ -52,8 +53,8 @@ function register($registerData){
             $error = 'An error has occured. Please try later';
             require ("view/register.php");
         }
-        catch (registeredException){
-            $error = 'You have not fill all';
+        catch (NotFullFillException){
+            $error = 'You have not fill all field requiered';
             require ("view/register.php");
         }
         catch (registeredException){
