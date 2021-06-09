@@ -41,6 +41,7 @@ function checkData($dataToCheck){
         isset($dataToCheck['userInputLastname']) &&
         isset($dataToCheck['userInputUsername']) &&
         isset($dataToCheck['userInputPassword']) &&
+        isset($dataToCheck['userInputPasswordVerify']) &&
         isset($dataToCheck['userInputEmail']) &&
         isset($dataToCheck['userInputLocality']) &&
         isset($dataToCheck['userInputNPA']) &&
@@ -52,21 +53,28 @@ function checkData($dataToCheck){
             strlen($dataToCheck['userInputLastname']) <= 50 &&
             strlen($dataToCheck['userInputUsername']) <= 50 &&
             strlen($dataToCheck['userInputPassword']) <= 256 &&
-            strlen($dataToCheck['userInputPassword']) >= 8 &&
+            strlen($dataToCheck['userInputPasswordVerify']) <= 256 &&
             strlen($dataToCheck['userInputEmail']) <= 319 &&
             strlen($dataToCheck['userInputLocality']) <= 30 &&
             strlen($dataToCheck['userInputNPA']) == 4 &&
             is_numeric($dataToCheck['userInputNPA']) &&
             strlen($dataToCheck['userInputStreet']) <= 50
         ) {
-            return;
+            if($dataToCheck['userInputPassword'] == $dataToCheck['userInputPasswordVerify']){
+                return;
+            }
+            else{
+                //TODO Erreur de Throw en question qui pose problème.
+                throw new passwordNotMatchException();
+            }
         } else {
-            throw new NotFullFillException();
+            throw new notFullFillException();
         }
     }
     else{
-        throw new NotFullFillException();
+        throw new notFullFillException();
     }
+
 }
 
 /**
@@ -97,11 +105,12 @@ function ifSellerExists($email){
 function registering($registerData){
     require_once "model/dbConnector.php";
     try {
+        $passwordHash = password_hash($registerData['userInputPassword'], PASSWORD_DEFAULT);
         if(isset($registerData['userInputPhonenumber'])){
-            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $registerData['userInputPassword'] . "','" . $registerData['userInputPhonenumber'] . "','" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
+            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "','" . $registerData['userInputPhonenumber'] . "','" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
         }
         else{
-            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $registerData['userInputPassword'] . "'," . NULL . ",'" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
+            $query = "INSERT INTO sellers VALUES (" . NULL . ",'" . $registerData['userInputFirstname'] . "','" . $registerData['userInputLastname'] . "','" . $registerData['userInputUsername'] . "','" . $passwordHash . "'," . NULL . ",'" . $registerData['userInputEmail'] . "','" . $registerData['userInputLocality']  . "','" . $registerData['userInputNPA'] . "','" . $registerData['userInputStreet'] . "');";
         }
         $queryResult = executeQuery($query);
     }
@@ -110,5 +119,6 @@ function registering($registerData){
     }
 }
 class wrongLoginException extends Exception{}
+class passwordNotMatchException extends Exception{}
 class registeredException extends Exception{}
-class NotFullFillException extends Exception{}
+class notFullFillException extends Exception{}

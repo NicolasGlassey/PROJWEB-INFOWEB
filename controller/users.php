@@ -47,13 +47,17 @@ function register($registerData){
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
             $_SESSION["userName"] = $registerData["userInputUsername"];
-            require ("view/home.php");
+            require ("view/shop.php");
         }
         catch (databaseException){
             $error = 'An error has occured. Please try later';
             require ("view/register.php");
         }
-        catch (NotFullFillException){
+        catch (passwordNotMatchException){
+            $error = 'The two password is not matching';
+            require ("view/register.php");
+        }
+        catch (notFullFillException){
             $error = 'You have not fill all field requiered';
             require ("view/register.php");
         }
