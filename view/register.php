@@ -83,7 +83,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Phone Number (optional)</label>
-                                <input class="input--style-4" type="text" name="userInputPhonenumber">
+                                <input class="input--style-4" type="number" name="userInputPhonenumber">
                             </div>
                         </div>
                         <div class="col-2">
@@ -97,7 +97,7 @@
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">NPA</label>
-                                <input class="input--style-4" type="text" name="userInputNPA" required>
+                                <input class="input--style-4" type="number" name="userInputNPA" required>
                             </div>
                         </div>
                         <div class="col-2">
