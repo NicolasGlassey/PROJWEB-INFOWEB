@@ -46,7 +46,7 @@ function register($registerData){
             checkData($registerData);
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
-            $_SESSION["userEmail"] = $registerData["userInputUsername"];
+            $_SESSION["userEmail"] = $registerData["userInputEmail"];
             require_once ("controller/articles.php");
             displayArticles();
         }
