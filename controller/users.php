@@ -13,11 +13,11 @@ require "model/usersManager.php";
  */
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
-        $userName = $postDatas["userInputEmail"];
+        $email = $postDatas["userInputEmail"];
         $password = $postDatas["userPswd"];//Encrypt the user password
         try{
-            if(checkLogin($userName,$password)){ //Checking user credentials in the json file
-                $_SESSION["userName"] = $userName;
+            if(checkLogin($email,$password)){ //Checking user credentials in the json file
+                $_SESSION["userEmail"] = $email;
                 require ("view/home.php");
             }
         }
@@ -36,6 +36,43 @@ function login($postDatas){
 }
 
 /**
+ * @brief This function is designed to redirect the user on the register page and check if user : fill correctly all field, email entered by user match with a user in database and if all thing is ok it register the new seller in the database
+ * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
+ */
+function register($registerData){
+    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
+        try {
+            require_once ("model/usersManager.php");
+            checkData($registerData);
+            ifSellerExists($registerData['userInputEmail']);
+            registering($registerData);
+            $_SESSION["userEmail"] = $registerData["userInputEmail"];
+            require_once ("controller/articles.php");
+            displayArticles();
+        }
+        catch (databaseException){
+            $error = 'An error has occured. Please try later';
+            require ("view/register.php");
+        }
+        catch (passwordNotMatchException){
+            $error = 'The two passwords are not matching';
+            require ("view/register.php");
+        }
+        catch (notFullFillException){
+            $error = 'You have not fill all field requiered';
+            require ("view/register.php");
+        }
+        catch (registeredException){
+            $error = 'You already have an account';
+            require ("view/register.php");
+        }
+    }
+    else{
+        require ("view/register.php");
+    }
+}
+
+/**
  * @brief This function is designed to log the user out of his session by destroying the $_SESSION variable
  */
 function logout(){
@@ -43,4 +80,3 @@ function logout(){
     session_destroy();
     require ("view/home.php");
 }
-

@@ -36,12 +36,15 @@ function executeQuery($query){
     if ($dbConnexion != null){
         $statement = $dbConnexion->prepare($query); //préparation de requête
         $result = $statement->execute(); //Execution de la requête
+        if($result == false){
+            throw new databaseException();
+        }
     }
     else{
         throw new databaseException();
     }
     $dbConnexion = null; //Fermeture de la connexion à la base de données
-    return $result;
+
 }
 
 /**
