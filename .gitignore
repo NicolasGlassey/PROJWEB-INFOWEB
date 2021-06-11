@@ -44,3 +44,6 @@ cmake-build-*/
 out/
 #ignore application datas
 data/
+
+#ignore dbCredentials.json
+model/dbCredentials.json
