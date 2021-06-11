@@ -106,8 +106,8 @@ ob_start()
                     <?php foreach($articles as $article):?>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="txthover">
-                                <?php if(is_file($article['image'])) : ?>
-                                <img src="<?=$article['image'];?>" alt="car">
+                                <?php if(is_file("data/adsImages/" . $article['image'])) : ?>
+                                <img src="data/adsImages/<?=$article['image'];?>" alt="car">
                                 <?php else : ?>
                                 <img src="/view/Site/image/noImage.png" alt="no car image found">
                                 <?php endif; ?>
@@ -118,9 +118,9 @@ ob_start()
                                         <div class="glyphicon glyphicon-star"></div>
                                     </div>
                                     <div class="simpletxt">
-                                        <h3 class="name"><?=$article['title']?></h3>
-                                        <p>"<?=$article['description']?>" </p>
-                                        <h4 class="price"><?=$article['price']?></h4>
+                                        <h3 class="name"><?=$article['brand']?> <?=$article['model']?></h3>
+                                        <p>"<?=$article['year']?>" <br> <?=$article['mileage']?> Mile(s) <br> <?=$article['horsepower']?> HP</p>
+                                        <h4 class="price"><?=$article['price']?> $ </h4>
                                         <button>READ MORE</button><br>
                                         <div class="wishtxt">
                                             <p class="paragraph1"> Add to Wishlist <span class="glyphicon glyphicon-heart"></span> </p>

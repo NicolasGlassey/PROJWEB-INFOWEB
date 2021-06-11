@@ -11,7 +11,7 @@
  */
 require_once "model/jsonManager.php";
 function getArticles(){
-    $query = "SELECT image, brand, model, price FROM cars";
+    $query = "SELECT image, brand, model, price, year, mileage, horsepower FROM cars";
     require_once "model/dbConnector.php";
     try {
        $queryResult = executeQueryReturn($query);
