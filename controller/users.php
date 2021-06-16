@@ -14,7 +14,7 @@ require "model/usersManager.php";
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
         $email = $postDatas["userInputEmail"];
-        $password = $postDatas["userPswd"];//Encrypt the user password
+        $password = $postDatas["userPswd"];//Encrypt the user password //TODO is the comment correct ?
         try{
             if(checkLogin($email,$password)){ //Checking user credentials in the json file
                 $_SESSION["userEmail"] = $email;
@@ -22,7 +22,8 @@ function login($postDatas){
             }
         }
         catch (databaseException){
-            $error = 'An error has occured. Please try later';
+            //TODO typo mistake already fixed
+            $error = 'An error has occurred. Please try later';
             require ("view/login.php");
         }
         catch (wrongLoginException){
@@ -40,7 +41,12 @@ function login($postDatas){
  * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
  */
 function register($registerData){
-    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
+    //TODO proposition : https://softwareengineering.stackexchange.com/questions/312889/how-to-follow-the-80-character-limit-best-practice-while-writing-source-code
+    //TODO DRY -> your repeat this operation in checkData function
+    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) &&
+        isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) &&
+        isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) &&
+        isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
         try {
             require_once ("model/usersManager.php");
             checkData($registerData);
@@ -54,6 +60,7 @@ function register($registerData){
             $error = 'An error has occured. Please try later';
             require ("view/register.php");
         }
+        //TODO this exception is never thrown (may be already fix in register feature)
         catch (passwordNotMatchException){
             $error = 'The two passwords are not matching';
             require ("view/register.php");

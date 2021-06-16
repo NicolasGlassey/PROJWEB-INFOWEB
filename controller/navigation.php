@@ -10,6 +10,7 @@
  * @brief This function is designed to redirect the user on the error page if the requested page doesn't exist
  */
 function notFound(){
+    //TODO proposition in relation with index. Do we need a not found if we use a home with error message ?
     require_once "view/lost.php";
 }
 
@@ -17,6 +18,7 @@ function notFound(){
  * @brief This function is designed to redirect the user on the home page when requested
  */
 function home(){
+    //TODO proposition : add error message when the home is display by default or when action (index) is unknown
     require_once "view/home.php";
 }
 

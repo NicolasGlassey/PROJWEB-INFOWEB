@@ -34,10 +34,12 @@ if(isset($_GET['action'])){
             contact();
             break;
         default:
+            //TODO proposition : got to home (with error message, page not found
             notFound();
     }
 }
 else{
+    //TODO propoosition : remove this else condition
     //Require welcome page
     home();
 }

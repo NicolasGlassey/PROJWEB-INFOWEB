@@ -10,6 +10,11 @@
  * @return array
  */
 require_once "model/jsonManager.php";
+/**
+ * //TODO missing documentation for exception
+ * @throws articlesException
+ * @throws databaseException
+ */
 function getArticles(){
     $query = "SELECT image, brand, model, price, year, mileage, horsepower FROM cars";
     require_once "model/dbConnector.php";
@@ -22,7 +27,6 @@ function getArticles(){
     catch (databaseException){
         throw new databaseException();
     }
-
     return $queryResult;
 }
 // Exceptions when there's no articles in the database

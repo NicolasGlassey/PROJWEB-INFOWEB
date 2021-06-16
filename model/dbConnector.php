@@ -15,6 +15,7 @@ function executeQueryReturn($query){
     $queryResult = null;
     $dbConnexion = openDBConnexion();
     if ($dbConnexion != null){
+        //TODO remove french comments
         $statement = $dbConnexion->prepare($query); //préparation de requête
         $statement->execute(); //Execution de la requête
         $queryResult = $statement->fetchAll(); //Préparation des résultats pour le client
@@ -29,6 +30,7 @@ function executeQueryReturn($query){
 /**
  * @brief This function is designed to execute an insert query received as parameter
  * @param $query
+ * @throws databaseException //TODO MISSING COMMMENT
  */
 function executeQuery($query){
     $dbConnexion = openDBConnexion(); //Ouvre la connection à la BD
@@ -53,6 +55,7 @@ function executeQuery($query){
 function openDBConnexion(){
     $tempDBConnexion = null;
 
+    //TODO review in live
     /*$sqlDriver = 'mysql';
     $hostName = 'localhost';
     $port = 3306;
@@ -79,5 +82,4 @@ function openDBConnexion(){
 }
 //Exceptions when the connection to the database failed
 class databaseException extends Exception{
-
 }

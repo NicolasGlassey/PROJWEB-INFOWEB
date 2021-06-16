@@ -32,11 +32,13 @@ function checkLogin($email, $usrPswd){
 /**
  * @brief Check if data entered in the form by user respect all constraint of the database and if all field requiered is fill of data.
  * @param $dataToCheck
- * @throws NotFullFillException
+ * //TODO do not forget to document all exception type and in which situation they are thrown
+ * @throws NotFullFillException|passwordNotMatchException
  */
 function checkData($dataToCheck){
     //Checking if all field are filled.
     if(
+        //TODO DRY -> you arleady check isset before calling the function. Why do you test again ?
         isset($dataToCheck['userInputFirstname']) &&
         isset($dataToCheck['userInputLastname']) &&
         isset($dataToCheck['userInputUsername']) &&
@@ -68,10 +70,12 @@ function checkData($dataToCheck){
                 throw new passwordNotMatchException();
             }
         } else {
+            //TODO DRY
             throw new notFullFillException();
         }
     }
     else{
+        //TODO DRY
         throw new notFullFillException();
     }
 
