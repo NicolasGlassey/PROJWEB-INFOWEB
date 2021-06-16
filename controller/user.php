@@ -6,10 +6,12 @@
  * @version   15.02.2021
  */
 
-require "model/usersManager.php";
+require "model/userManager.php";
 /**
  * @brief This function is designed to redirect the user on the login page and check if this user is logged in or not, if not it checks the user credentials int the JSON users file
- * @param $postDatas : Datas coming from the login form , including username and user password
+ * @param $postDatas : Datas coming from the login form , including username and user password.
+ * @throws databaseException : Meaning a problem to contact database.
+ * @throws wrongLoginException : Problem to login wrond information send.
  */
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
@@ -38,6 +40,10 @@ function login($postDatas){
 /**
  * @brief This function is designed to redirect the user on the register page and check if user : fill correctly all field, email entered by user match with a user in database and if all thing is ok it register the new seller in the database
  * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
+ * @throws databaseException
+ * @throws registeredException
+ * @throws passwordNotMatchException
+ * @throws notFullFillException
  */
 function register($registerData){
     if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
