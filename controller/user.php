@@ -48,7 +48,7 @@ function login($postDatas){
 function register($registerData){
     if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) && isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) && isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) && isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
         try {
-            require_once ("model/usersManager.php");
+            require_once ("model/userManager.php");
             checkData($registerData);
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
@@ -65,7 +65,7 @@ function register($registerData){
             require ("view/register.php");
         }
         catch (notFullFillException){
-            $error = 'You have not fill all field requiered';
+            $error = 'You have not filled all requiered field or not correctly filled';
             require ("view/register.php");
         }
         catch (registeredException){
