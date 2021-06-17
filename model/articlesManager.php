@@ -6,14 +6,10 @@
  * @version   17.03.2021
  */
 /**
- * @brief This function is designed to get all the articles from the database and send it to the controller
- * @return array
- */
-require_once "model/jsonManager.php";
-/**
- * //TODO missing documentation for exception
- * @throws articlesException
- * @throws databaseException
+ * @brief This function is designed to get all the articles from the database
+ * @return array|null : Return a two dimensional array or more but starts with 0=>key, 1=>key, etc
+ * @throws articlesException : This exception is thrown when there is no articles in the DB
+ * @throws databaseException : This exception is thrown when theres is troubles connecting to the DB
  */
 function getArticles(){
     $query = "SELECT image, brand, model, price, year, mileage, horsepower FROM cars";

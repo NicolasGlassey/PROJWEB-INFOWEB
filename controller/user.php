@@ -16,7 +16,7 @@ require "model/userManager.php";
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
         $email = $postDatas["userInputEmail"];
-        $password = $postDatas["userPswd"];//Encrypt the user password //TODO is the comment correct ?
+        $password = $postDatas["userPswd"];
         try{
             if(checkLogin($email,$password)){ //Checking user credentials in the json file
                 $_SESSION["userEmail"] = $email;
@@ -24,7 +24,6 @@ function login($postDatas){
             }
         }
         catch (databaseException){
-            //TODO typo mistake already fixed
             $error = 'An error has occurred. Please try later';
             require ("view/login.php");
         }

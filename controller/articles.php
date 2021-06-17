@@ -16,7 +16,6 @@ function displayArticles(){
         require_once "view/shop.php";
     }
     catch (databaseException){
-        //TODO typo mistake already fixed
         $error = "An error has occurred. Please try later";
         require_once "view/shop.php";
     }

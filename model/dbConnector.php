@@ -13,31 +13,30 @@
  */
 function executeQueryReturn($query){
     $queryResult = null;
-    $dbConnexion = openDBConnexion();
+    $dbConnexion = openDBConnexion();//Opens DB connection
     if ($dbConnexion != null){
-        //TODO remove french comments
-        $statement = $dbConnexion->prepare($query); //préparation de requête
-        $statement->execute(); //Execution de la requête
-        $queryResult = $statement->fetchAll(); //Préparation des résultats pour le client
+        $statement = $dbConnexion->prepare($query); //Prepare the query
+        $statement->execute(); //Query execution
+        $queryResult = $statement->fetchAll();
     }
     else{
         throw new databaseException();
     }
-    $dbConnexion = null; //Fermeture de la connexion à la base de données
+    $dbConnexion = null; //Closing connection to the DB
     return $queryResult;
 }
 
 /**
  * @brief This function is designed to execute an insert query received as parameter
  * @param $query
- * @throws databaseException //TODO MISSING COMMMENT
+ * @throws databaseException : This exception is thrown if something went wrong with the query execution
  */
 function executeQuery($query){
-    $dbConnexion = openDBConnexion(); //Ouvre la connection à la BD
+    $dbConnexion = openDBConnexion(); //Opens DB connection
     $result = false;
     if ($dbConnexion != null){
-        $statement = $dbConnexion->prepare($query); //préparation de requête
-        $result = $statement->execute(); //Execution de la requête
+        $statement = $dbConnexion->prepare($query); //Prepare the query
+        $result = $statement->execute(); //Query execution
         if($result == false){
             throw new databaseException();
         }
@@ -45,7 +44,7 @@ function executeQuery($query){
     else{
         throw new databaseException();
     }
-    $dbConnexion = null; //Fermeture de la connexion à la base de données
+    $dbConnexion = null; //Closing connection to the DB
 
 }
 
@@ -56,7 +55,6 @@ function executeQuery($query){
 function openDBConnexion(){
     $tempDBConnexion = null;
 
-    //TODO review in live
     require_once "model/jsonManager.php";
     try{
         $credentials = readJson("model/dbCredentials.json");
