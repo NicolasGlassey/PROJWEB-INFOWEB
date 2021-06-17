@@ -46,40 +46,29 @@ function login($postDatas){
  * @throws notFullFillException
  */
 function register($registerData){
-    //TODO proposition : https://softwareengineering.stackexchange.com/questions/312889/how-to-follow-the-80-character-limit-best-practice-while-writing-source-code
-    //TODO DRY -> your repeat this operation in checkData function
-    if(isset($registerData["userInputEmail"]) && isset($registerData["userInputFirstname"]) &&
-        isset($registerData["userInputLastname"]) && isset($registerData["userInputUsername"]) &&
-        isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) &&
-        isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
-        try {
-            require_once ("model/userManager.php");
-            checkData($registerData);
-            ifSellerExists($registerData['userInputEmail']);
-            registering($registerData);
-            $_SESSION["userEmail"] = $registerData["userInputEmail"];
-            require_once ("controller/articles.php");
-            displayArticles();
-        }
-        catch (databaseException){
-            $error = 'An error has occured. Please try later';
-            require ("view/register.php");
-        }
-        //TODO this exception is never thrown (may be already fix in register feature)
-        catch (passwordNotMatchException){
-            $error = 'The two passwords are not matching';
-            require ("view/register.php");
-        }
-        catch (notFullFillException){
-            $error = 'You have not filled all requiered field or not correctly filled';
-            require ("view/register.php");
-        }
-        catch (registeredException){
-            $error = 'You already have an account';
-            require ("view/register.php");
-        }
+    try {
+        require_once ("model/userManager.php");
+        checkData($registerData);
+        ifSellerExists($registerData['userInputEmail']);
+        registering($registerData);
+        $_SESSION["userEmail"] = $registerData["userInputEmail"];
+        require_once ("controller/articles.php");
+        displayArticles();
     }
-    else{
+    catch (databaseException){
+        $error = 'An error has occured. Please try later';
+        require ("view/register.php");
+    }
+    catch (passwordNotMatchException){
+        $error = 'The two passwords are not matching';
+        require ("view/register.php");
+    }
+    catch (notFullFillException){
+        $error = 'You have not filled all requiered field or not correctly filled';
+        require ("view/register.php");
+    }
+    catch (registeredException){
+        $error = 'You already have an account';
         require ("view/register.php");
     }
 }

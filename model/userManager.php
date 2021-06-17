@@ -32,13 +32,12 @@ function checkLogin($email, $usrPswd){
 /**
  * @brief Check if data entered in the form by user respect all constraint of the database and if all field requiered is fill of data.
  * @param $dataToCheck
- * //TODO do not forget to document all exception type and in which situation they are thrown
- * @throws NotFullFillException|passwordNotMatchException
+ * @throws passwordNotMatchException : Meaning two password given by user is not matching.
+ * @throws NotFullFillException : Meaning all field requiered in the form are not fill of information.
  */
 function checkData($dataToCheck){
     //Checking if all field are filled.
     if(
-        //TODO DRY -> you already check isset before calling the function. Why do you test again ?
         isset($dataToCheck['userInputFirstname']) &&
         isset($dataToCheck['userInputLastname']) &&
         isset($dataToCheck['userInputUsername']) &&
@@ -62,30 +61,23 @@ function checkData($dataToCheck){
             is_numeric($dataToCheck['userInputNPA']) &&
             strlen($dataToCheck['userInputStreet']) <= 50
         ) {
-            if($dataToCheck['userInputPassword'] == $dataToCheck['userInputPasswordVerify']){
+            if ($dataToCheck['userInputPassword'] == $dataToCheck['userInputPasswordVerify']) {
                 return;
-            }
-            else{
-                //TODO Erreur de Throw en question qui pose problème.
+            } else {
                 throw new passwordNotMatchException();
             }
-        } else {
-            //TODO DRY
-            throw new notFullFillException();
         }
     }
     else{
-        //TODO DRY
         throw new notFullFillException();
     }
-
 }
 
 /**
  * @brief This function is designed to check if the email entered by the user already match with a user registered in the database.
  * @param $email
- * @throws databaseException
- * @throws registeredException
+ * @throws databaseException : Meaning an error comming from the database connexion.
+ * @throws registeredException : Meaning a user already exists with this email address.
  */
 function ifSellerExists($email){
     require_once "model/dbConnector.php";
@@ -104,7 +96,7 @@ function ifSellerExists($email){
 /**
  * @brief This function is designed to register a new user in the database.
  * @param $registerData
- * @throws databaseException
+ * @throws databaseException : Meaning an error from the database connexion.
  */
 function registering($registerData){
     require_once "model/dbConnector.php";
