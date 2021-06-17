@@ -6,7 +6,7 @@
  * @version   08.02.2021
  */
 
-require "controller/users.php";
+require "controller/user.php";
 require "controller/navigation.php";
 require "controller/articles.php";
 

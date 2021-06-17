@@ -6,10 +6,12 @@
  * @version   15.02.2021
  */
 
-require "model/usersManager.php";
+require "model/userManager.php";
 /**
  * @brief This function is designed to redirect the user on the login page and check if this user is logged in or not, if not it checks the user credentials int the JSON users file
- * @param $postDatas : Datas coming from the login form , including username and user password
+ * @param $postDatas : Datas coming from the login form , including username and user password.
+ * @throws databaseException : Meaning a problem to contact database.
+ * @throws wrongLoginException : Problem to login wrond information send.
  */
 function login($postDatas){
     if(isset($postDatas["userInputEmail"]) && isset($postDatas["userPswd"])){
@@ -39,6 +41,10 @@ function login($postDatas){
 /**
  * @brief This function is designed to redirect the user on the register page and check if user : fill correctly all field, email entered by user match with a user in database and if all thing is ok it register the new seller in the database
  * @param $registerData : Datas coming from the register form , including ; email, firstname, lastname, username, password,phone number, locality, NPA and Street.
+ * @throws databaseException
+ * @throws registeredException
+ * @throws passwordNotMatchException
+ * @throws notFullFillException
  */
 function register($registerData){
     //TODO proposition : https://softwareengineering.stackexchange.com/questions/312889/how-to-follow-the-80-character-limit-best-practice-while-writing-source-code
@@ -48,7 +54,7 @@ function register($registerData){
         isset($registerData["userInputPassword"]) && isset($registerData["userInputLocality"]) &&
         isset($registerData["userInputNPA"]) && isset($registerData["userInputStreet"])){
         try {
-            require_once ("model/usersManager.php");
+            require_once ("model/userManager.php");
             checkData($registerData);
             ifSellerExists($registerData['userInputEmail']);
             registering($registerData);
@@ -66,7 +72,7 @@ function register($registerData){
             require ("view/register.php");
         }
         catch (notFullFillException){
-            $error = 'You have not fill all field requiered';
+            $error = 'You have not filled all requiered field or not correctly filled';
             require ("view/register.php");
         }
         catch (registeredException){
