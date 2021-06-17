@@ -39,7 +39,7 @@ if(isset($_GET['action'])){
     }
 }
 else{
-    //TODO propoosition : remove this else condition
+    //TODO proposition : remove this else condition
     //Require welcome page
     home();
 }

@@ -38,7 +38,7 @@ function checkLogin($email, $usrPswd){
 function checkData($dataToCheck){
     //Checking if all field are filled.
     if(
-        //TODO DRY -> you arleady check isset before calling the function. Why do you test again ?
+        //TODO DRY -> you already check isset before calling the function. Why do you test again ?
         isset($dataToCheck['userInputFirstname']) &&
         isset($dataToCheck['userInputLastname']) &&
         isset($dataToCheck['userInputUsername']) &&

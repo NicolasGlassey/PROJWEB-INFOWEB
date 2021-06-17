@@ -51,31 +51,20 @@ function executeQuery($query){
 
 /**
  * @return PDO|null
+ * @throws databaseException
  */
 function openDBConnexion(){
     $tempDBConnexion = null;
 
     //TODO review in live
-    /*$sqlDriver = 'mysql';
-    $hostName = 'localhost';
-    $port = 3306;
-    $charset = 'utf8';
-    $dbName = 'snows';
-    $userName = 'appliConnector';
-    $userPwd = '123qweasdD!';
-    */
     require_once "model/jsonManager.php";
     try{
         $credentials = readJson("model/dbCredentials.json");
-    }
-    catch (jsonFileException){
-        throw new databaseException();
-    }
-    $dsn = $credentials->sqlDriver. ":host=". $credentials->hostName . ";dbname=".$credentials->dbName.";port=".$credentials->port.";charset=".$credentials->charset;
-    try{
+        $dsn = $credentials->sqlDriver. ":host=". $credentials->hostName . ";dbname=".
+            $credentials->dbName.";port=".$credentials->port.";charset=".$credentials->charset;
         $tempDBConnexion = new PDO($dsn, $credentials->userName, $credentials->userPwd);
     }
-    catch(PDOException){
+    catch(jsonFileException | PDOException){
         throw new databaseException();
     }
     return $tempDBConnexion;
