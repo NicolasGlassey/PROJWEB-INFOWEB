@@ -15,9 +15,13 @@
 function checkLogin($email, $usrPswd){
     require_once "model/dbConnector.php";
     try {
+        $result = false;
         $query = "SELECT password FROM sellers WHERE email ='" . $email ."';";
         $queryResult = executeQueryReturn($query);
-        $result = password_verify($usrPswd, $queryResult[0]['password']);
+        if(isset($queryResult[0]['password']))
+        {
+            $result = password_verify($usrPswd, $queryResult[0]['password']);
+        }
         if(!($result)){
             throw new wrongLoginException();
         }
