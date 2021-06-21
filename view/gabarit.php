@@ -40,7 +40,7 @@
                 <li> <a href="../index.php?action=logout">Logout </a></li>
             <?php else:?>
                 <li><a href="../index.php?action=login">Login </a></li>
-                <li><a href="../index.php?action=register"><span class="register">Register</span></a></li>
+                <li><a href="../index.php?action=displayRegister"><span class="register">Register</span></a></li>
             <?php endif;?>
         </ul>
     </div>

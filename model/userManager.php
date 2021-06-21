@@ -66,7 +66,7 @@ function checkData($dataToCheck){
             strlen($dataToCheck['userInputStreet']) <= 50
         ) {
             if ($dataToCheck['userInputPassword'] == $dataToCheck['userInputPasswordVerify']) {
-                return;
+                return true;
             } else {
                 throw new passwordNotMatchException();
             }

@@ -57,19 +57,19 @@ function register($registerData){
     }
     catch (databaseException){
         $error = 'An error has occured. Please try later';
-        require ("view/register.php");
+        require_once ("view/register.php");
     }
     catch (passwordNotMatchException){
         $error = 'The two passwords are not matching';
-        require ("view/register.php");
+        require_once ("view/register.php");
     }
     catch (notFullFillException){
         $error = 'You have not filled all requiered field or not correctly filled';
-        require ("view/register.php");
+        require_once ("view/register.php");
     }
     catch (registeredException){
         $error = 'You already have an account';
-        require ("view/register.php");
+        require_once ("view/register.php");
     }
 }
 

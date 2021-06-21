@@ -18,6 +18,9 @@ if(isset($_GET['action'])){
         case "login":
             login($_POST);
             break;
+        case "displayRegister":
+            displayRegister();
+            break;
         case "register":
             register($_POST);
             break;

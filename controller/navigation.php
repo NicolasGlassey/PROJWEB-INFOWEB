@@ -26,3 +26,10 @@ function home(){
 function contact(){
     require_once "view/contact.php";
 }
+
+/**
+ * @brief This function is designed to redirect the user on the register page when requested
+ */
+function displayRegister(){
+    require_once "view/register.php";
+}
